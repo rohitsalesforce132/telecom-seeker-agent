@@ -1,0 +1,17 @@
+[
+  {"id": "q1", "question": "What is AMF?", "expected_answer": "Access and Mobility Management Function", "difficulty": "easy", "required_hops": 1, "domain": "5g_core"},
+  {"id": "q2", "question": "What interfaces connect AMF to gNB?", "expected_answer": "N2 (NGAP)", "difficulty": "easy", "required_hops": 2, "domain": "5g_core"},
+  {"id": "q3", "question": "How does SMF connect to UPF?", "expected_answer": "Via N4 interface using PFCP protocol", "difficulty": "medium", "required_hops": 3, "domain": "5g_core"},
+  {"id": "q4", "question": "Trace the signal path from UE to internet", "expected_answer": "UE-Uu-gNB-N3-UPF-N6-DN", "difficulty": "hard", "required_hops": 6, "domain": "5g_core"},
+  {"id": "q5", "question": "What happens if AMF goes down?", "expected_answer": "All new UE registrations fail. Existing sessions may survive via SMF. Runbook RB-001 applies.", "difficulty": "hard", "required_hops": 5, "domain": "incident"},
+  {"id": "q6", "question": "Which 3GPP spec defines 5G procedures?", "expected_answer": "TS 23.502", "difficulty": "easy", "required_hops": 1, "domain": "spec"},
+  {"id": "q7", "question": "What is O-RAN RIC and what does it do?", "expected_answer": "RAN Intelligent Controller with Near-RT (10ms-1s) and Non-RT (>1s) components for AI/ML-driven RAN optimization", "difficulty": "medium", "required_hops": 3, "domain": "ran"},
+  {"id": "q8", "question": "How does CAMARA QoD API work?", "expected_answer": "Requests QoS profiles via NEF, which maps to PCF policies enforced by UPF", "difficulty": "hard", "required_hops": 5, "domain": "camara"},
+  {"id": "q9", "question": "If UPF experiences high latency what runbook applies?", "expected_answer": "RB-002: Check metrics, CPU, N4 sessions, GTP-U tunnels, buffer sizes", "difficulty": "medium", "required_hops": 3, "domain": "incident"},
+  {"id": "q10", "question": "What is the full path of network slice selection?", "expected_answer": "UE sends NSSAI to AMF via N1, AMF queries NSSF via N22, NSSF checks UDM subscription via N8, returns slice info", "difficulty": "expert", "required_hops": 8, "domain": "5g_core"},
+  {"id": "q11", "question": "What protocol does N4 use?", "expected_answer": "PFCP (Packet Forwarding Control Protocol) per 3GPP TS 29.244", "difficulty": "easy", "required_hops": 2, "domain": "5g_core"},
+  {"id": "q12", "question": "Explain O-RAN fronthaul", "expected_answer": "O-DU to O-RU link carrying IQ samples via eCPRI protocol", "difficulty": "medium", "required_hops": 3, "domain": "ran"},
+  {"id": "q13", "question": "How to detect SIM swap fraud?", "expected_answer": "Use CAMARA SIM Swap API to check recent swaps, correlate with location, check IMEI changes", "difficulty": "medium", "required_hops": 4, "domain": "camara"},
+  {"id": "q14", "question": "What services are affected if NRF fails?", "expected_answer": "All NF discovery fails. No new sessions can be established. Existing sessions survive.", "difficulty": "hard", "required_hops": 5, "domain": "5g_core"},
+  {"id": "q15", "question": "Trace all services involved in a PDU session establishment", "expected_answer": "UE-AMF-SMF-UPF with UDM for subscription, PCF for policy, NRF for discovery, NSSF for slice", "difficulty": "expert", "required_hops": 8, "domain": "5g_core"}
+]

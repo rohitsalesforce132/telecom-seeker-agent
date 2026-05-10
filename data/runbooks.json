@@ -1,0 +1,12 @@
+[
+  {"id": "RB-001", "title": "AMF Service Outage Recovery", "service": "AMF", "error_type": "outage",
+   "steps": ["1. Check AMF pod health: kubectl get pods -n core | grep amf", "2. Check logs: kubectl logs -n core amf-0 --tail=100", "3. Check resource usage: kubectl top pod amf-0 -n core", "4. If OOMKilled: increase memory limit", "5. If CrashLoopBackOff: check config mounts", "6. Restart: kubectl rollout restart statefulset/amf -n core", "7. Verify UE registrations resume", "8. Check NRF registration: curl http://nrf:8080/nnrf-disccovery/v1/nf-instances?type=AMF"]},
+  {"id": "RB-002", "title": "UPF High Latency Investigation", "service": "UPF", "error_type": "latency",
+   "steps": ["1. Check UPF metrics: latency, packet loss, throughput", "2. Check CPU/memory: top, htop on UPF node", "3. Check N4 sessions: pfcpctl session list", "4. Check GTP-U tunnel stats", "5. If buffer overflow: increase socket buffer size", "6. If CPU spike: check for DDoS or traffic surge", "7. Consider UPF scaling: add UPF instance", "8. Verify PFCP association with SMF"]},
+  {"id": "RB-003", "title": "Network Slice Allocation Failure", "service": "NSSF", "error_type": "allocation_failure",
+   "steps": ["1. Check NSSF logs for slice selection failure reason", "2. Verify subscriber has slice subscription in UDM", "3. Check available slice resources", "4. Check PCF policy for requested slice", "5. Verify AMF sent correct slice info in registration", "6. Check SMF can handle requested slice", "7. Review NSSAI configuration", "8. Escalate to network planning if resource exhaustion"]},
+  {"id": "RB-004", "title": "gNB Connection Failure", "service": "gNB", "error_type": "connection_failure",
+   "steps": ["1. Check gNB status: service status, process running", "2. Check backhaul connectivity: ping core gateway", "3. Check N2 connectivity to AMF: NGAP status", "4. Check N3 connectivity to UPF: GTP-U tunnel", "5. Check RF: interference, power levels", "6. Check O-RU connectivity if split architecture", "7. Review recent config changes", "8. Check SMO for management plane issues"]},
+  {"id": "RB-005", "title": "SIM Swap Fraud Detection", "service": "UDM", "error_type": "fraud",
+   "steps": ["1. Check CAMARA SIM Swap API for recent swaps", "2. Correlate with location data", "3. Check if IMEI changed with SIM swap", "4. Flag if multiple swaps in short period", "5. Block suspicious SIM and notify customer", "6. Escalate to fraud team", "7. Document for regulatory reporting"]}
+]

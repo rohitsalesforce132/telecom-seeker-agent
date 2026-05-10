@@ -1,0 +1,11 @@
+[
+  {"id": "spec-23501", "title": "3GPP TS 23.501 - System Architecture", "content": "Defines 5G system architecture including all Network Functions (AMF, SMF, UPF, UDM, AUSF, NRF, PCF, NEF, NSSF), reference points (N1-N22), service-based interfaces, and network slicing architecture."},
+  {"id": "spec-23502", "title": "3GPP TS 23.502 - Procedures", "content": "Defines 5G procedures: Registration, PDU Session Establishment, Service Request, Handover, Network Slice selection, Authentication (5G-AKA, EAP-AKA), and Policy Control procedures."},
+  {"id": "spec-23503", "title": "3GPP TS 23.503 - Policy and Charging", "content": "Defines Policy and Charging Control (PCC) in 5G. QoS flows, charging rules, SMF-PCF interaction via N7."},
+  {"id": "spec-23731", "title": "3GPP TS 23.731 - O-RAN Architecture", "content": "Open RAN architecture: O-CU, O-DU, O-RU split, fronthaul interface (eCPRI), RIC (Near-RT and Non-RT), A1/E2/O1 interfaces."},
+  {"id": "spec-29244", "title": "3GPP TS 29.244 - PFCP (N4)", "content": "Packet Forwarding Control Protocol used on N4 interface between SMF and UPF. Session establishment, FAR, PDR, QER rules."},
+  {"id": "camara-qod", "title": "CAMARA Quality-on-Demand", "content": "API to request QoS profiles for device sessions. Parameters: device, qosProfile (LATENCY/THROUGHPUT), duration. Uses NEF to map to PCF policies."},
+  {"id": "camara-simswap", "title": "CAMARA SIM Swap", "content": "API to check if SIM was swapped. Returns: latestSimChange timestamp. Used for fraud prevention in financial transactions."},
+  {"id": "camara-device", "title": "CAMARA Device Status", "content": "API to check device reachability, roaming status. Returns: reachable (bool), roaming (bool), batteryLevel."},
+  {"id": "camara-numverify", "title": "CAMARA Number Verification", "content": "API to verify phone number matches device. Used for passwordless auth, transaction verification."}
+]
