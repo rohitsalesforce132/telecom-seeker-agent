@@ -111,7 +111,7 @@ class TelecomSeekerAgent:
     def synthesize_training_data(self, queries: list, min_steps: int = None) -> list:
         """Strict low-step filtering: only keep hard trajectories."""
         
-        D_v2 = {(q,τ) ∈ D_raw | T(τ) >= T_min}
+        Only keep trajectories with T(tau) >= T_min tool calls.
         
         Only keeps trajectories that required >= min_steps tool calls.
         """
