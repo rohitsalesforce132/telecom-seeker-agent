@@ -95,7 +95,7 @@ class TelecomKnowledgeGraph:
         return results
 
     def expand_subgraph(self, seed_id: str, max_depth: int = 3) -> list[GraphEntity]:
-        """OpenSeeker-v2's graph scaling: expand from seed with increasing depth."""
+        """Graph scaling: expand from seed with increasing depth: expand from seed with increasing depth."""
         return self.traverse(seed_id, max_depth=max_depth)
 
     def get_random_entities(self, n: int) -> list[GraphEntity]:

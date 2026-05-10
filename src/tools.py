@@ -1,4 +1,4 @@
-"""Telecom Search Tools — 5 tools for multi-step search (OpenSeeker-v2 inspired)."""
+"""Telecom Search Tools — 5 tools for multi-step telecom search."""
 import json
 import os
 from models import ToolType, ToolCall

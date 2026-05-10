@@ -1,5 +1,5 @@
 """Telecom Seeker Agent — ReAct-style deep search agent for telecom domain.
-Inspired by OpenSeeker-v2: multi-step reasoning with tools + difficulty filtering.
+Multi-step reasoning with tools + difficulty filtering.
 """
 from models import ToolType, ToolCall, SearchStep, SearchTrajectory, TelecomQuery, QueryDifficulty
 from knowledge_graph import TelecomKnowledgeGraph
@@ -9,7 +9,7 @@ from tools import TelecomToolSet
 class TelecomSeekerAgent:
     """ReAct-style telecom search agent.
     
-    OpenSeeker-v2's key insight: high-difficulty trajectories produce better agents.
+    Key insight: high-difficulty trajectories produce better agents..
     This agent demonstrates multi-step search across a telecom knowledge graph.
     """
 
@@ -109,12 +109,11 @@ class TelecomSeekerAgent:
         return QueryDifficulty.EXPERT
 
     def synthesize_training_data(self, queries: list, min_steps: int = None) -> list:
-        """OpenSeeker-v2's strict low-step filtering.
+        """Strict low-step filtering: only keep hard trajectories."""
         
         D_v2 = {(q,τ) ∈ D_raw | T(τ) >= T_min}
         
         Only keeps trajectories that required >= min_steps tool calls.
-        This is the KEY innovation from OpenSeeker-v2.
         """
         min_steps = min_steps or self.min_steps_for_learning
         raw_trajectories = []

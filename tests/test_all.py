@@ -66,7 +66,7 @@ def test_agent_multihop():
 
 
 def test_difficulty_filtering():
-    """OpenSeeker-v2's strict low-step filtering."""
+    """Strict low-step filtering: only keep hard trajectories."""
     config = Config(min_steps_for_learning=4)
     agent = TelecomSeekerAgent(config)
     queries = [

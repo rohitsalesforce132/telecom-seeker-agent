@@ -1,4 +1,4 @@
-"""Training data synthesis demo — OpenSeeker-v2's difficulty filtering."""
+"""Training data synthesis demo — difficulty filtering."""
 import sys, os, json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
@@ -9,7 +9,7 @@ from models import TelecomQuery, QueryDifficulty
 agent = TelecomSeekerAgent(Config(min_steps_for_learning=4))
 
 print("=" * 60)
-print("OpenSeeker-v2 Style: Data Synthesis + Difficulty Filtering")
+print("Data Synthesis + Difficulty Filtering")
 print("=" * 60)
 
 queries = [
@@ -33,9 +33,9 @@ print(f"   Raw trajectories: {len(raw)}")
 print(f"   Easy (< 4 steps): {easy}")
 print(f"   Hard (>= 4 steps): {hard}")
 
-# Step 3: Apply strict low-step filtering (OpenSeeker-v2)
+# Step 3: Apply strict low-step filtering
 filtered = agent.synthesize_training_data(queries, min_steps=4)
-print(f"\n2. OpenSeeker-v2 Strict Filtering (min_steps=4):")
+print(f"\n2. Strict Filtering (min_steps=4):")
 print(f"   Kept: {len(filtered)} / {len(raw)} trajectories ({100*len(filtered)//len(raw)}%)")
 
 # Step 4: Export as SFT data
@@ -52,9 +52,9 @@ with open(output_path, 'w') as f:
     json.dump(sft_data, f, indent=2)
 print(f"\n4. Saved to {output_path}")
 
-# Key insight from OpenSeeker-v2:
+# Key insight:
 print(f"\n{'=' * 60}")
-print("KEY INSIGHT (OpenSeeker-v2):")
+print("KEY INSIGHT:")
 print(f"  Easy examples teach the agent NOTHING.")
 print(f"  Only keep HARD trajectories (>= 4 tool calls).")
 print(f"  {len(filtered)} high-quality examples > {len(raw)} mixed-quality examples.")

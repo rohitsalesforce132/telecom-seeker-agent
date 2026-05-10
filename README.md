@@ -1,6 +1,6 @@
 # Telecom Seeker Agent
 
-A **standalone ReAct-style deep search agent for telecom domain**, inspired by [OpenSeeker-v2](https://arxiv.org/abs/2605.04036). Multi-step reasoning over a 5G knowledge graph with 35+ entities, 5 search tools, and OpenSeeker-v2's strict difficulty filtering for SFT data synthesis.
+A **standalone ReAct-style deep search agent for telecom domain**. Multi-step reasoning over a 5G knowledge graph with 35+ entities, 5 search tools, and strict difficulty filtering for SFT data synthesis.
 
 ## What It Does
 
@@ -39,16 +39,16 @@ Query: "Trace the signal path from UE to internet"
 │  └────────────────────────────────────┘   │
 │                                          │
 │  ┌────────────────────────────────────┐   │
-│  │  OpenSeeker-v2 Difficulty Filter   │   │
+│  │  Difficulty Filter   │   │
 │  │  D = {(q,τ) | T(τ) >= T_min}     │   │
 │  │  Only keep HARD trajectories       │   │
 │  └────────────────────────────────────┘   │
 └──────────────────────────────────────────┘
 ```
 
-## OpenSeeker-v2's 3 Modifications Applied to Telecom
+## Key Design Decisions
 
-| Modification | What We Did | Why |
+| Decision | What We Did | Why |
 |---|---|---|
 | **Scale graph size** | 35+ entities with rich relationships | More multi-hop paths = harder queries |
 | **Expand tool set** | 5 distinct search tools | Agent learns diverse strategies |
@@ -102,11 +102,13 @@ AMF Outage, UPF High Latency, Slice Allocation Failure
 ### Specs (2)
 TS 23.501, TS 23.502
 
-## Interview Talking Points
+## Key Features
 
-> "I built a telecom deep search agent inspired by OpenSeeker-v2 from Shanghai Jiao Tong University. The key insight: 10.6K high-difficulty training trajectories with simple SFT beats industrial pipelines using CPT+SFT+RL. I applied this to telecom by building a 35-entity 5G knowledge graph, 5 search tools, and strict difficulty filtering that only keeps trajectories requiring 4+ tool calls. Easy examples teach the model nothing."
-
-> "The three modifications from OpenSeeker-v2 map directly to telecom: scale the knowledge graph for richer multi-hop queries, expand the tool set for diverse search strategies, and filter out any query solvable in fewer than 4 steps. This produces concentrated, high-quality training data."
+- Multi-step ReAct reasoning over telecom knowledge graph
+- 5 specialized search tools for diverse strategies
+- Strict difficulty filtering for high-quality training data
+- SFT data export in chat messages format
+- Runs locally, no API keys needed
 
 ## File Structure
 
@@ -126,7 +128,7 @@ tests/
 examples/
   demo_basic.py         # Basic search demo
   demo_multihop.py      # Multi-hop reasoning demo
-  demo_training.py      # OpenSeeker-v2 data synthesis demo
+  demo_training.py      # Data synthesis demo
 skills/
   network_troubleshooter.md
   5g_architecture_expert.md
@@ -137,4 +139,4 @@ skills/
 
 MIT
 
-*Inspired by [OpenSeeker-v2](https://arxiv.org/abs/2605.04036) — proving that data quality beats pipeline complexity.*
+*Proving that data quality and difficulty filtering beats brute-force scale.*
