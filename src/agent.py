@@ -109,10 +109,7 @@ class TelecomSeekerAgent:
         return QueryDifficulty.EXPERT
 
     def synthesize_training_data(self, queries: list, min_steps: int = None) -> list:
-        """Strict low-step filtering: only keep hard trajectories."""
-        
-        Only keep trajectories with T(tau) >= T_min tool calls.
-        
+        """Strict low-step filtering: only keep hard trajectories.
         Only keeps trajectories that required >= min_steps tool calls.
         """
         min_steps = min_steps or self.min_steps_for_learning
